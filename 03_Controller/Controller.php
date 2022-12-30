@@ -1,6 +1,6 @@
 <?php
 
-require_once "Model/AlbumManager.php";
+require_once "01_Model/AlbumManager.php";
 
 class Controller {
     private $albumManager;
@@ -13,7 +13,10 @@ class Controller {
     // ------------------ ALBUMS ---------------------- //
     public function displayAlbums() {
         $albums = $this->albumManager->getAlbums();
-        require_once "View/home.php";
+        require_once "02_View/albums_photos.php";
+    }
+    public function newAlbumForm() {
+        require_once "02_View/album_form.php";
     }
     // public function newHeroForm() {
     //     require_once "03_view/new_hero_view.php";
