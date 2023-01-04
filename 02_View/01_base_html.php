@@ -1,4 +1,6 @@
-
+<?php
+var_dump($_SESSION);
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -37,10 +39,10 @@
                     </li>
 
                     <?php
-                    if(isset($_SESSION)) {
+                    if(!empty($_SESSION)) {
                     ?>
                     <li class="nav-item">
-                    <a class="nav-link" href="<?= URL?>login/disconnected">Se deconnecter</a>
+                    <a class="nav-link" href="<?= URL?>connexion_inscription/disconnected">Se deconnecter</a>
                     </li>
                     <?php
                     }

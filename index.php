@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once "03_Controller/Controller.php";
 $controller = new Controller();
 
@@ -21,19 +21,22 @@ if (empty($_GET['page'])) {
                 $controller->newAlbumForm();
             }
         break;
-        case 'login' :
-            // if(empty($url[1])){
-            //     $gameControler->displayUsers();
-            // }
-            // else if($url[1] === "inscvalid") {
-            //    $gameControler->newUserValidation();
-            // }
-            // else
-             if($url[1] === 'disconnected') {
-            session_destroy();
-            header('Location: '.URL.'home');
+        case 'me_contacter' : require_once "02_View/me_contacter.php";
+        break;
+        case 'connexion_inscription' :
+            if(empty($url[1])){
+                require_once '02_View/connexion_inscription.php';
             }
-            ;
+            elseif($url[1] === 'inscvalid') {
+                $controller->newUser();
+            }
+            elseif($url[1] === 'connectvalid'){
+                $controller->connectUser();
+            }
+            elseif($url[1] === 'disconnected') {
+                session_destroy();
+                header('Location: ' . URL . 'accueil');
+            }
         break;
     }
 }

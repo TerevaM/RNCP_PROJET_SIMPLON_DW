@@ -16,7 +16,7 @@ foreach($albums as $value) {
     <div class="d-flex justify-content-around position-absolute fixed-bottom py-2">
         <a href="<?= URL ?>heros/edit/<?= $value->getId() ?>" class="btn btn-primary"><i class="fa-regular fa-pen-to-square"></i></a>
         <form action="<?= URL ?>heros/delete/<?= $value->getId() ?>" method="POST"
-        onsubmit=" return confirm('Etes-vous certain de vouloir supprimer cet hero ?')">
+        onsubmit=" return confirm('Etes-vous certain de vouloir supprimer cet album ?')">
             <button class="btn btn-primary" type="submit"><i class="fa-solid fa-trash"></i></button>
         </form>
     </div>

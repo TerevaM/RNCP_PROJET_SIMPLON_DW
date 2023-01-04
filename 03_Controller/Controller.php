@@ -1,14 +1,16 @@
 <?php
-
 require_once "01_Model/AlbumManager.php";
-
+require_once "01_Model/UserManager.php";
 class Controller {
     private $albumManager;
+    private $userManager;
 
     public function __construct()
     {
         $this->albumManager = new AlbumManager();
         $this->albumManager->loadAlbums();
+        $this->userManager = new UserManager();
+        $this->userManager->loadUsers();
     }
     // ------------------ ALBUMS ---------------------- //
     public function displayAlbums() {
@@ -38,4 +40,19 @@ class Controller {
     //     $this->heroManager->deleteHeroDB($id);
     //     header("Location: ". URL ."heros");
     // }
+    // ------------------ USERS ---------------------- //
+
+    public function newUser() {
+
+    }
+    public function connectUser() {
+        $user = $this->userManager->getUserByEmail($_POST['email'], $_POST['password']);
+        session_start();
+        $_SESSION['firstname'] = $user->getFirstname();
+        $_SESSION['lastname'] = $user->getLastname();
+        $_SESSION['email'] = $user->getEmail();
+        $_SESSION['password'] = $user->getPassword();
+        $_SESSION['rank'] = $user->getRank();
+        header('Location: '. URL .'accueil');
+    }
 }

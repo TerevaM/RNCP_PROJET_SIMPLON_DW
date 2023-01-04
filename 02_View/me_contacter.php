@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
 
-<h1 class="text-white">Accueil</h1>
+<h1 class="text-white">Page contact</h1>
 
 <?php
 
