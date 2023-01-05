@@ -20,6 +20,10 @@ class Controller {
     public function newAlbumForm() {
         require_once "02_View/album_form.php";
     }
+    public function newAlbumValid() {
+        $this->albumManager->newAlbumDB($_POST['name'], $_POST['category']);
+        header('Location: '. URL . 'albums_photos');
+    }
     // public function newHeroForm() {
     //     require_once "03_view/new_hero_view.php";
     // }

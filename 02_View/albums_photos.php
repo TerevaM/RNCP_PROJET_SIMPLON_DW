@@ -2,6 +2,7 @@
 <div class="container my-5 py-5">
     <div class="row d-flex justify-content-around ">
 <?php
+if($albums){
 foreach($albums as $value) {
 ?>
 
@@ -23,6 +24,7 @@ foreach($albums as $value) {
   </div>
 </div>
 <?php
+}
 }
 // if(isset($_SESSION) && $_SESSION['rang'] == 'admin'):
 ?>

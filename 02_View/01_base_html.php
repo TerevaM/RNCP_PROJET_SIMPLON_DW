@@ -10,7 +10,7 @@ var_dump($_SESSION);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galerie photo </title>
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.2.2/sketchy/bootstrap.min.css" />
-     <link rel="stylesheet" href="04_utils/css/style.css">
+     <link rel="stylesheet" href="<?= URL ?>04_utils/css/style.css">
     <!-- style.css -->
 </head>
 
@@ -25,19 +25,15 @@ var_dump($_SESSION);
                     <li class="nav-item">
                     <a class="nav-link" href="<?= URL ?>accueil">Accueil</a>
                     </li>
-
                     <li class="nav-item">
                     <a class="nav-link" href="<?= URL?>albums_photos">Albums Photos</a>
                     </li>
-
                     <li class="nav-item">
                     <a class="nav-link" href="<?= URL?>me_contacter">Me contacter</a>
                     </li>
-
                     <li class="nav-item">
                     <a class="nav-link" href="<?= URL?>connexion_inscription">Connexion Inscription</a>
                     </li>
-
                     <?php
                     if(!empty($_SESSION)) {
                     ?>

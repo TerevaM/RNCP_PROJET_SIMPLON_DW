@@ -20,6 +20,9 @@ if (empty($_GET['page'])) {
             else if($url[1] === 'create'){
                 $controller->newAlbumForm();
             }
+            else if($url[1] === 'createvalid') {
+                $controller->newAlbumValid();
+            }
         break;
         case 'me_contacter' : require_once "02_View/me_contacter.php";
         break;

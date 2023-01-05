@@ -23,26 +23,21 @@ class AlbumManager extends Manager {
             $this->addAlbum($album);
         }
     }
-    // public function newHeroDB($name, $category, $life, $attack, $first_cap, $second_cap, $passif){
-    //     $req ="INSERT INTO heroes (name, category, vie, attaque, first_cap, second_cap, passif)
-    //     VALUES (:name, :category, :vie, :attaque, :first_cap, :second_cap, :passif)";
-    //     $statement = $this->getBdd()->prepare($req);
-    //     $statement->bindValue(":name", $name, PDO::PARAM_STR);
-    //     $statement->bindValue(":category", $category, PDO::PARAM_STR);
-    //     $statement->bindValue(":vie", $life, PDO::PARAM_INT);
-    //     $statement->bindValue(":attaque", $attack, PDO::PARAM_INT);
-    //     $statement->bindValue(":first_cap", $first_cap, PDO::PARAM_STR);
-    //     $statement->bindValue(":second_cap", $second_cap, PDO::PARAM_STR);
-    //     $statement->bindValue(":passif", $passif, PDO::PARAM_STR);
-
-    //     $result = $statement->execute();
-    //     $statement->closeCursor();
-
-    //     if($result) {
-    //         $hero = new Hero($this->getBdd()->lastInsertId(),$name, $category, $life, $attack, $first_cap, $second_cap, $passif);
-    //         $this->addHero($hero);
-    //     }
-    // }
+    public function newAlbumDB($name, $category){
+        $req ="INSERT INTO albums (name, category, release_date)
+        VALUES (:name, :category, :release_date)";
+        $statement = $this->getBdd()->prepare($req);
+        $statement->bindValue(":name", $name, PDO::PARAM_STR);
+        $statement->bindValue(":category", $category, PDO::PARAM_STR);
+        $date = date("d/m/y");
+        $statement->bindValue(":release_date", $date, PDO::PARAM_STR);
+        $result = $statement->execute();
+        $statement->closeCursor();
+        if($result) {
+            $album = new Album($this->getBdd()->lastInsertId(),$name, $category, $date);
+            $this->addAlbum($album);
+        }
+    }
 
     // public function getHeroById($id) {
     //     foreach($this->tab_heroes as $value) {
