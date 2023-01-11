@@ -39,6 +39,13 @@
         <div class="mb-3">
         <label for="password" class="form-label text-white">Password</label>
         <input name="password" type="text" class="form-control" required>
+        <?php 
+        if(isset($corr) && $corr === 1) {
+          ?>
+        <p>adresse email déjà enregistré</p>
+          <?php
+        }
+        ?>
         </div>
       <button type="submit" class="btn btn-secondary">Submit</button>
       </form>

@@ -1,12 +1,12 @@
 <?php
 
 class User {
-    private $id;
-    private $firstname;
-    private $lastname;
-    private $email;
-    private $password;
-    private $rank;
+    private int $id;
+    private string $firstname;
+    private string $lastname;
+    private string $email;
+    private string $password;
+    private string $rank;
     
     public function __construct($id, $firstname, $lastname, $email, $password, $rank)
     {

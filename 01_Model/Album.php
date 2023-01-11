@@ -1,10 +1,10 @@
 <?php
 
 class Album {
-    private $id;
-    private $name;
-    private $category;
-    private $release_date;
+    private int $id;
+    private string $name;
+    private string $category;
+    private string $release_date;
 
     public function __construct($id, $name, $category, $release_date)
     {

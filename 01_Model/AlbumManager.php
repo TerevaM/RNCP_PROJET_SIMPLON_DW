@@ -23,6 +23,29 @@ class AlbumManager extends Manager {
             $this->addAlbum($album);
         }
     }
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+    public function newAlbumFormValidation($name, $category, $picture_name){
+    // $req=$dbLink->prepare('INSERT INTO photos(name_id, nom,taille,type,bin,album) VALUES(?,?,?,?,?,"'.$_POST['album'] .'" )');
+    // $picture = 'picture_'. time();
+    // $req->execute(array($picture,$files['image']['name'], $files['image']['size'], $files['image']['type'],file_get_contents($files['image']['tmp_name'])));
+        $req ="INSERT INTO albums (name, category, picture_name, release_date)
+        VALUES (:name, :category, :picture_name, :release_date)";
+        $date = date("d/m/y");
+        $statement = $this->getBdd()->prepare($req);
+        $statement->bindValue(":name", $name, PDO::PARAM_STR);
+        $statement->bindValue(":category", $category, PDO::PARAM_STR);
+        $statement->bindValue(":picture_name", $picture_name, PDO::PARAM_STR);
+        $statement->bindValue(":release_date", $date, PDO::PARAM_STR);
+
+        $result = $statement->execute();
+        $statement->closeCursor();
+
+        if($result) {
+            $album = new Album($this->getBdd()->lastInsertId(),$name, $category,$picture_name ,$date);
+=======
+>>>>>>> Stashed changes
     public function newAlbumDB($name, $category){
         $req ="INSERT INTO albums (name, category, release_date)
         VALUES (:name, :category, :release_date)";
@@ -35,6 +58,7 @@ class AlbumManager extends Manager {
         $statement->closeCursor();
         if($result) {
             $album = new Album($this->getBdd()->lastInsertId(),$name, $category, $date);
+<<<<<<< Updated upstream
             $this->addAlbum($album);
         }
     }
@@ -46,46 +70,50 @@ class AlbumManager extends Manager {
     //         }
     //     }
     // }
+=======
+>>>>>>> 7cc9b267823fd5b8be624e3a8f747798ea798862
+            $this->addAlbum($album);
+        }
+    }
+>>>>>>> Stashed changes
 
-    // public function editHeroDB($id, $name, $category, $life, $attack, $first_cap, $second_cap, $passif){
-    //     $req = "UPDATE heroes SET name = :name, category = :category, vie = :vie, attaque = :attaque, first_cap = :first_cap, second_cap = :second_cap, passif = :passif WHERE id = :id";
+    public function getAlbumsById($id) {
+        foreach($this->tab_albums as $value) {
+            if($value->getId() == $id){
+                return $value;
+            }
+        }
+    }
+    
 
-    //     $statement = $this->getBdd()->prepare($req);
-    //     $statement->bindValue(":id", $id, PDO::PARAM_INT);
-    //     $statement->bindValue(":name", $name, PDO::PARAM_STR);
-    //     $statement->bindValue(":category", $category, PDO::PARAM_STR);
-    //     $statement->bindValue(":vie", $life, PDO::PARAM_INT);
-    //     $statement->bindValue(":attaque", $attack, PDO::PARAM_INT);
-    //     $statement->bindValue(":first_cap", $first_cap, PDO::PARAM_STR);
-    //     $statement->bindValue(":second_cap", $second_cap, PDO::PARAM_STR);
-    //     $statement->bindValue(":passif", $passif, PDO::PARAM_STR);
+    public function editAlbumDB($id, $name, $category){
+        $req = "UPDATE albums SET name = :name, category = :category WHERE id = :id";
 
-    //     $result = $statement->execute();
-    //     $statement->closeCursor();
+        $statement = $this->getBdd()->prepare($req);
+        $statement->bindValue(":id", $id, PDO::PARAM_INT);
+        $statement->bindValue(":name", $name, PDO::PARAM_STR);
+        $statement->bindValue(":category", $category, PDO::PARAM_STR);
 
-    //     if($result) {
-    //         $this->getHeroById($id)->setName($name);
-    //         $this->getHeroById($id)->setCategory($category);
-    //         $this->getHeroById($id)->setVie($life);
-    //         $this->getHeroById($id)->setAttaque($attack);
-    //         $this->getHeroById($id)->setFirst_cap($first_cap);
-    //         $this->getHeroById($id)->setSecond_cap($second_cap);
-    //         $this->getHeroById($id)->setPassif($passif);
+        $result = $statement->execute();
+        $statement->closeCursor();
 
-    //     }
-    // }
+        if($result) {
+            $this->getAlbumsById($id)->setName($name);
+            $this->getAlbumsById($id)->setCategory($category);
+        }
+    }
 
-    // public function deleteHeroDB($id) {
-    //     $req = "DELETE FROM heroes WHERE id = :id";
-    //     $statement = $this->getBdd()->prepare($req);
-    //     $statement->bindValue(":id", $id, PDO::PARAM_INT);
+    public function deleteAlbumDB($id) {
+        $req = "DELETE FROM albums WHERE id = :id";
+        $statement = $this->getBdd()->prepare($req);
+        $statement->bindValue(":id", $id, PDO::PARAM_INT);
 
-    //     $result = $statement->execute();
-    //     $statement->closeCursor();
+        $result = $statement->execute();
+        $statement->closeCursor();
 
-    //     if($result) {
-    //         $hero = $this->getHeroById($id);
-    //         unset($hero);
-    //     }
-    // }
+        if($result) {
+            $album = $this->getAlbumsById($id);
+            unset($album);
+        }
+    }
 }

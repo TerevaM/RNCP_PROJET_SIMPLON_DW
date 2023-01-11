@@ -30,4 +30,14 @@ body {
 }
 
 /*MAIN*/
+
+.accueil > section {
+  height: 100vh;
+  background-color: blue;
+}
+
+.accueil > section:nth-child(odd) {
+  background-color: red;
+}
+
 /*FOOTER*/

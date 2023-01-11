@@ -20,6 +20,14 @@ class Controller {
     public function newAlbumForm() {
         require_once "02_View/album_form.php";
     }
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+    // public function newAlbumFormValidation() {
+    //     $this->albumManager->newAlbumFormValidation($_POST['name'], $_POST['category']);
+    //     header('Location: '. URL .'albums_photos');
+=======
+>>>>>>> Stashed changes
     public function newAlbumValid() {
         $this->albumManager->newAlbumDB($_POST['name'], $_POST['category']);
         header('Location: '. URL . 'albums_photos');
@@ -38,25 +46,45 @@ class Controller {
     // public function editHeroValidation() {
     // $this->heroManager->editHeroDB($_POST['id_hero'],$_POST['name'], $_POST['category'], $_POST['life'], $_POST['attack'], $_POST['first_cap'], $_POST['second_cap'], $_POST['passif']);
     //         header('Location: '. URL .'heros');
+>>>>>>> 7cc9b267823fd5b8be624e3a8f747798ea798862
     // }
+    public function editAlbumForm($id) {
+        $album = $this->albumManager->getAlbumsById($id);
+        require_once "02_view/edit_album.php";
+    }
+    public function editAlbumValidation() {
+    $this->albumManager->editAlbumDB($_POST['id_album'],$_POST['name'], $_POST['category']);
+            header('Location: '. URL .'albums_photos');
+    }
 
-    // public function deleteHero($id) {
-    //     $this->heroManager->deleteHeroDB($id);
-    //     header("Location: ". URL ."heros");
-    // }
+    public function deleteAlbum($id) {
+        $this->albumManager->deleteAlbumDB($id);
+        header("Location: ". URL ."albums_photos");
+    }
     // ------------------ USERS ---------------------- //
 
     public function newUser() {
-
+        //verif email exist
+        $emailCo = $this->userManager->emailExist($_POST['email']);
+        if($emailCo) {
+            //manque correspondance email
+            header('Location: '. URL .'connexion_inscription');
+        }
+        else {
+            $userInsc = $this->userManager->newUserDB($_POST['firstname'], $_POST['lastname'], $_POST['email'], $_POST['password']);
+            $this->connectUser();
+            header('Location: '. URL .'accueil');
+        }
     }
     public function connectUser() {
         $user = $this->userManager->getUserByEmail($_POST['email'], $_POST['password']);
-        session_start();
-        $_SESSION['firstname'] = $user->getFirstname();
-        $_SESSION['lastname'] = $user->getLastname();
-        $_SESSION['email'] = $user->getEmail();
-        $_SESSION['password'] = $user->getPassword();
-        $_SESSION['rank'] = $user->getRank();
-        header('Location: '. URL .'accueil');
+        var_dump($user);
+        if($user) {
+            $this->userManager->getSession($user);
+            header('Location: '. URL .'accueil');
+        }
+        else {
+            header('Location: '. URL .'connexion_inscription');
+        }
     }
 }

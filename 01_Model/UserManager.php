@@ -25,13 +25,14 @@ class UserManager extends Manager {
     }
 
     public function newUserDB($firstname, $lastname, $email, $password){
+        $pass_hash =  password_hash($password, PASSWORD_DEFAULT);
         $req ="INSERT INTO users (firstname, lastname, email, password, rank)
         VALUES (:firstname, :lastname, :email, :password, :rank)";
         $statement = $this->getBdd()->prepare($req);
         $statement->bindValue(":firstname", $firstname, PDO::PARAM_STR);
         $statement->bindValue(":lastname", $lastname, PDO::PARAM_STR);
         $statement->bindValue(":email", $email, PDO::PARAM_STR);
-        $statement->bindValue(":password", $password, PDO::PARAM_STR);
+        $statement->bindValue(":password", $pass_hash, PDO::PARAM_STR);
         // rang par defaut
         $statement->bindValue(":rank", 'visiteur', PDO::PARAM_STR);
 
@@ -39,15 +40,32 @@ class UserManager extends Manager {
         $statement->closeCursor();
 
         if($result) {
-            $user = new User($this->getBdd()->lastInsertId(),$firstname, $lastname, $email, $password, 'visiteur');
+            $user = new User($this->getBdd()->lastInsertId(),$firstname, $lastname, $email, $pass_hash, 'visiteur');
             $this->addUser($user);
         }
     }
+    public function emailExist($email) {
+        $correspondance = 0;
+        foreach($this->tab_users as $value) {
+            if($value->getEmail() === $email):
+                $correspondance++;
+            endif;
+        }
+        $correspondance > 0 ? $corr = true : $corr = false;
+        return $corr;
+    }
    public function getUserByEmail($email, $password) {
         foreach($this->tab_users as $value) {
-            if($value->getEmail() === $email && $value->getPassword() === $password){
+            if($value->getEmail() === $email && password_verify($password, $value->getPassword())){
                 return $value;
             }
         }
+    }
+        public function getSession($user){
+        $_SESSION['firstname'] = $user->getFirstname();
+        $_SESSION['lastname'] = $user->getLastname();
+        $_SESSION['email'] = $user->getEmail();
+        $_SESSION['password'] = $user->getPassword();
+        $_SESSION['rank'] = $user->getRank();
     }
 }
