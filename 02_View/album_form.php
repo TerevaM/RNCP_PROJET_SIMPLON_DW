@@ -1,9 +1,6 @@
 <?php ob_start();
 ?>
 <div class="container-fluid d-flex justify-content-center flex-column">
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
   <h1 class="bg-secondary m-5">Création d'un nouvel album :</h1>
   <div class="container my-5 bg-primary">
     <form method="POST" enctype="multipart/form-data" action="<?= URL ?>albums_photos/createValid" class="container p-5">
@@ -22,8 +19,6 @@
       <button type="submit" class="btn btn-secondary">Submit</button>
     </form>
   </div>
-=======
->>>>>>> Stashed changes
     <h1 class="bg-white m-5">Nouvel album</h1>
     <div class="container my-5 bg-primary">
       <form method="POST" action="<?= URL ?>albums_photos/createvalid" class="container p-5">
@@ -38,10 +33,6 @@
         <button type="submit" class="btn btn-secondary">Submit</button>
         </form>
     </div>
-<<<<<<< Updated upstream
-=======
->>>>>>> 7cc9b267823fd5b8be624e3a8f747798ea798862
->>>>>>> Stashed changes
 </div>
 
 <?php

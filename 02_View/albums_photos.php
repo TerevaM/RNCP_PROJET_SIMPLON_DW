@@ -31,15 +31,8 @@ foreach($albums as $value) {
 </div>
 <?php
 }
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-if(!empty($_SESSION) && $_SESSION['rank'] == 'admin'):
-=======
->>>>>>> Stashed changes
 }
-// if(isset($_SESSION) && $_SESSION['rang'] == 'admin'):
->>>>>>> 7cc9b267823fd5b8be624e3a8f747798ea798862
+if(!empty($_SESSION) && $_SESSION['rank'] == 'admin'):
 ?>
 <div class="card col-4 m-1" style="width: 18rem; min-height: 23rem;">
   <div class="card-body d-flex justify-content-center align-items-center flex-column">

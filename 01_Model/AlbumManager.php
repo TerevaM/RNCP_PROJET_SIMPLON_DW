@@ -23,9 +23,6 @@ class AlbumManager extends Manager {
             $this->addAlbum($album);
         }
     }
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
     public function newAlbumFormValidation($name, $category, $picture_name){
     // $req=$dbLink->prepare('INSERT INTO photos(name_id, nom,taille,type,bin,album) VALUES(?,?,?,?,?,"'.$_POST['album'] .'" )');
     // $picture = 'picture_'. time();
@@ -44,9 +41,19 @@ class AlbumManager extends Manager {
 
         if($result) {
             $album = new Album($this->getBdd()->lastInsertId(),$name, $category,$picture_name ,$date);
-=======
->>>>>>> Stashed changes
-    public function newAlbumDB($name, $category){
+        }
+    }
+
+
+    public function getAlbumsById($id) {
+        foreach($this->tab_albums as $value) {
+            if($value->getId() == $id){
+                return $value;
+            }
+        }
+    }
+
+     public function newAlbumDB($name, $category){
         $req ="INSERT INTO albums (name, category, release_date)
         VALUES (:name, :category, :release_date)";
         $statement = $this->getBdd()->prepare($req);
@@ -58,30 +65,7 @@ class AlbumManager extends Manager {
         $statement->closeCursor();
         if($result) {
             $album = new Album($this->getBdd()->lastInsertId(),$name, $category, $date);
-<<<<<<< Updated upstream
             $this->addAlbum($album);
-        }
-    }
-
-    // public function getHeroById($id) {
-    //     foreach($this->tab_heroes as $value) {
-    //         if($value->getId() == $id){
-    //             return $value;
-    //         }
-    //     }
-    // }
-=======
->>>>>>> 7cc9b267823fd5b8be624e3a8f747798ea798862
-            $this->addAlbum($album);
-        }
-    }
->>>>>>> Stashed changes
-
-    public function getAlbumsById($id) {
-        foreach($this->tab_albums as $value) {
-            if($value->getId() == $id){
-                return $value;
-            }
         }
     }
     

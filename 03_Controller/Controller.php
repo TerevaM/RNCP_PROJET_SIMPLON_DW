@@ -20,14 +20,10 @@ class Controller {
     public function newAlbumForm() {
         require_once "02_View/album_form.php";
     }
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
     // public function newAlbumFormValidation() {
     //     $this->albumManager->newAlbumFormValidation($_POST['name'], $_POST['category']);
     //     header('Location: '. URL .'albums_photos');
-=======
->>>>>>> Stashed changes
+
     public function newAlbumValid() {
         $this->albumManager->newAlbumDB($_POST['name'], $_POST['category']);
         header('Location: '. URL . 'albums_photos');
@@ -46,7 +42,6 @@ class Controller {
     // public function editHeroValidation() {
     // $this->heroManager->editHeroDB($_POST['id_hero'],$_POST['name'], $_POST['category'], $_POST['life'], $_POST['attack'], $_POST['first_cap'], $_POST['second_cap'], $_POST['passif']);
     //         header('Location: '. URL .'heros');
->>>>>>> 7cc9b267823fd5b8be624e3a8f747798ea798862
     // }
     public function editAlbumForm($id) {
         $album = $this->albumManager->getAlbumsById($id);

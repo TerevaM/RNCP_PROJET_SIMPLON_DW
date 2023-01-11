@@ -20,11 +20,9 @@ if (empty($_GET['page'])) {
             else if($url[1] === 'create'){
                 $controller->newAlbumForm();
             }
-<<<<<<< Updated upstream
             else if($url[1] === 'createvalid') {
                 $controller->newAlbumValid();
-=======
-<<<<<<< HEAD
+            }
             // else if($url[1] === 'createValid'){
             //     $controller->newAlbumFormValidation();
             // }
@@ -36,11 +34,9 @@ if (empty($_GET['page'])) {
             }
             else if($url[1] === 'delete'){
                 $controller->deleteAlbum($url[2]);
-=======
+            }
             else if($url[1] === 'createvalid') {
                 $controller->newAlbumValid();
->>>>>>> 7cc9b267823fd5b8be624e3a8f747798ea798862
->>>>>>> Stashed changes
             }
         break;
         case 'me_contacter' : require_once "02_View/me_contacter.php";

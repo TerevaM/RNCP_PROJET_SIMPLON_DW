@@ -5,14 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galerie photo </title>
-<<<<<<< HEAD
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.2.2/cyborg/bootstrap.min.css" />
-=======
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.2.2/sketchy/bootstrap.min.css" />
-<<<<<<< Updated upstream
-=======
->>>>>>> 7cc9b267823fd5b8be624e3a8f747798ea798862
->>>>>>> Stashed changes
      <link rel="stylesheet" href="<?= URL ?>04_utils/css/style.css">
     <!-- style.css -->
 </head>
@@ -34,13 +27,7 @@
                     <li class="nav-item">
                     <a class="nav-link" href="<?= URL ?>me_contacter">Me contacter</a>
                     </li>
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
                     <?php if(empty($_SESSION)) : ?>
-=======
->>>>>>> 7cc9b267823fd5b8be624e3a8f747798ea798862
->>>>>>> Stashed changes
                     <li class="nav-item">
                     <a class="nav-link" href="<?= URL ?>connexion_inscription">Connexion Inscription</a>
                     </li>
