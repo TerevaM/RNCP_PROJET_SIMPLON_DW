@@ -1,0 +1,187 @@
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+} /* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+} /* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+} /* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(150, 150, 150);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none !important;
+}
+
+/*import*/
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
+/*BALISES*/
+
+body {
+  background-color: #1f1f1f;
+}
+
+.backButton {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  color: white;
+  padding: 10px;
+  background-color: #2f2f2f;
+  border: 1px solid grey;
+  animation: SlideFromLeft 0.2s ease-out;
+}
+
+h1 {
+  font-family: "Bebas Neue", cursive;
+  text-align: center;
+  margin-top: 30px;
+}
+
+/*KEYFRAMES*/
+
+@keyframes SlideFromLeft {
+  0% {
+    left: -100px;
+  }
+  100% {
+    left: 10px;
+  }
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.showPara {
+  opacity: 1;
+  animation: appear 1s ease-in;
+}
+
+@keyframes disappear {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.hidePara {
+  opacity: 0;
+  animation: disappear 1s ease-out;
+}
+
+/*HEADER*/
+
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+}
+
+/*MAIN*/
+
+.accueil {
+  section {
+    height: 100vh;
+    padding-top: 56px;
+  }
+  .transition {
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(to top, #1f1f1f, black 50%);
+  }
+  .transitionbis {
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(to top, black, #1f1f1f 50%);
+  }
+  #accueil {
+    background-color: black;
+    position: relative;
+    text-align: center;
+    h1 {
+      font-size: 90px;
+      bottom: 20%;
+      text-transform: uppercase;
+      margin-left: auto;
+      margin-right: auto;
+      left: 0;
+      right: 0;
+      white-space: nowrap;
+    }
+  }
+  #a_propos {
+    .para {
+      background-color: black;
+      width: 50%;
+      margin: 20px;
+      padding: 30px;
+      h3 {
+        font-family: "Bebas Neue", cursive;
+      }
+    }
+    #para2 {
+      position: absolute;
+      right: 0;
+      text-align: right;
+    }
+  }
+  #albums_photos {
+    background-color: black;
+  }
+  #me_contacter {
+    background-image: url("../wallp/reseaux.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    #reseaux {
+      margin-top: 30%;
+      text-align: center;
+      list-style-type: none;
+      li {
+        a {
+          img {
+            width: 50px;
+            height: 50px;
+            transition: all 0.5s;
+          }
+          h3 {
+            text-decoration: none;
+            font-size: 16px;
+            transition: all 0.5s;
+          }
+        }
+        a:hover {
+          img {
+            filter: grayscale(1);
+            transition: all 1s;
+          }
+          h3 {
+            font-size: 17px;
+            transition: all 0.5s;
+          }
+        }
+      }
+    }
+  }
+}
+/*FOOTER*/

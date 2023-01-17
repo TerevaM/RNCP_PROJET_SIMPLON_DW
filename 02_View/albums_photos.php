@@ -6,13 +6,12 @@ if($albums){
 foreach($albums as $value) {
 ?>
 
-<div class="card col-4 m-1 mooveit" style="width: 18rem; height:auto">
+<div class="card col-4 m-1 mooveit" style="width: 18rem; min-height: 23rem;">
 
-  <div class="card-body position-relative">
+  <a href="<?= URL ?>albums_photos/photos/<?= $value->getId(); ?>" class="card-body position-relative">
     <h3 class="card-title bg-primary p-2 text-center text-white"><?= $value->getName(); ?></h3>
     <span class="text-uppercase">Category : <?= $value->getCategory(); ?></span><br>
     <span>date de sortie : <?= $value->getRelease_date(); ?></span><br>
-    <img src="04_utils/pictures/pic1.jpg" class="img-fluid mb-5" alt="Responsive image">
     <!-- btn edit & delete -->
     <?php
     if(!empty($_SESSION) && $_SESSION['rank'] == 'admin'):
@@ -27,7 +26,7 @@ foreach($albums as $value) {
     <?php
     endif;
     ?>
-  </div>
+  </a>
 </div>
 <?php
 }

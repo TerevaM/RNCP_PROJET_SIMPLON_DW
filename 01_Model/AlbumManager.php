@@ -23,24 +23,23 @@ class AlbumManager extends Manager {
             $this->addAlbum($album);
         }
     }
-    public function newAlbumFormValidation($name, $category, $picture_name){
+    public function newAlbumFormValidation($name, $category){
     // $req=$dbLink->prepare('INSERT INTO photos(name_id, nom,taille,type,bin,album) VALUES(?,?,?,?,?,"'.$_POST['album'] .'" )');
     // $picture = 'picture_'. time();
     // $req->execute(array($picture,$files['image']['name'], $files['image']['size'], $files['image']['type'],file_get_contents($files['image']['tmp_name'])));
-        $req ="INSERT INTO albums (name, category, picture_name, release_date)
-        VALUES (:name, :category, :picture_name, :release_date)";
+        $req ="INSERT INTO albums (name, category, release_date)
+        VALUES (:name, :category, :release_date)";
         $date = date("d/m/y");
         $statement = $this->getBdd()->prepare($req);
         $statement->bindValue(":name", $name, PDO::PARAM_STR);
         $statement->bindValue(":category", $category, PDO::PARAM_STR);
-        $statement->bindValue(":picture_name", $picture_name, PDO::PARAM_STR);
         $statement->bindValue(":release_date", $date, PDO::PARAM_STR);
 
         $result = $statement->execute();
         $statement->closeCursor();
 
         if($result) {
-            $album = new Album($this->getBdd()->lastInsertId(),$name, $category,$picture_name ,$date);
+            $album = new Album($this->getBdd()->lastInsertId(),$name, $category ,$date);
         }
     }
 

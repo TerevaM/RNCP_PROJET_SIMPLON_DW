@@ -1,4 +1,5 @@
-<?php ob_start(); ?>
+<?php ob_start();
+?>
 
 <div class="container">
   <div class="row d-flex flex-row">
@@ -40,7 +41,7 @@
         <label for="password" class="form-label text-white">Password</label>
         <input name="password" type="text" class="form-control" required>
         <?php 
-        if(isset($corr) && $corr === 1) {
+        if(isset($_GET['corr']) && $_GET['corr'] == 1) {
           ?>
         <p>adresse email déjà enregistré</p>
           <?php

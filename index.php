@@ -23,9 +23,6 @@ if (empty($_GET['page'])) {
             else if($url[1] === 'createvalid') {
                 $controller->newAlbumValid();
             }
-            // else if($url[1] === 'createValid'){
-            //     $controller->newAlbumFormValidation();
-            // }
             else if($url[1] === 'edit'){
                 $controller->editAlbumForm($url[2]);
             }
@@ -35,11 +32,11 @@ if (empty($_GET['page'])) {
             else if($url[1] === 'delete'){
                 $controller->deleteAlbum($url[2]);
             }
-            else if($url[1] === 'createvalid') {
-                $controller->newAlbumValid();
+            //photos
+            else if ($url[1] === 'photos') {
+                $controller->displayPhotos($url[2]);
             }
-        break;
-        case 'me_contacter' : require_once "02_View/me_contacter.php";
+
         break;
         case 'connexion_inscription' :
             if(empty($url[1])){
@@ -56,5 +53,12 @@ if (empty($_GET['page'])) {
                 header('Location: ' . URL . 'accueil');
             }
         break;
+        case 'admin' :
+            if(empty($url[1])) {
+                require_once '02_View/admin.php';
+            }
+            else if($url[1] === 'create'){
+                $controller->newPicture();
+            }
     }
 }

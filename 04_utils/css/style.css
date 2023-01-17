@@ -1,6 +1,5 @@
-/*SCROLLBAR*/
-
 /* width */
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 ::-webkit-scrollbar {
   width: 10px;
 } /* Track */
@@ -14,14 +13,100 @@
   background: rgb(150, 150, 150);
 }
 
-/*BALISES*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none !important;
+}
 
+/*import*/
+/*BALISES*/
 body {
-  background-color: #2f2f2f !important;
+  background-color: #1f1f1f;
+}
+
+.backButton {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  color: white;
+  padding: 10px;
+  background-color: #2f2f2f;
+  border: 1px solid grey;
+  -webkit-animation: SlideFromLeft 0.2s ease-out;
+          animation: SlideFromLeft 0.2s ease-out;
+}
+
+h1 {
+  font-family: "Bebas Neue", cursive;
+  text-align: center;
+  margin-top: 30px;
+}
+
+/*KEYFRAMES*/
+@-webkit-keyframes SlideFromLeft {
+  0% {
+    left: -100px;
+  }
+  100% {
+    left: 10px;
+  }
+}
+@keyframes SlideFromLeft {
+  0% {
+    left: -100px;
+  }
+  100% {
+    left: 10px;
+  }
+}
+@-webkit-keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.showPara {
+  opacity: 1;
+  -webkit-animation: appear 1s ease-in;
+          animation: appear 1s ease-in;
+}
+
+@-webkit-keyframes disappear {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes disappear {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.hidePara {
+  opacity: 0;
+  -webkit-animation: disappear 1s ease-out;
+          animation: disappear 1s ease-out;
 }
 
 /*HEADER*/
-
 .navbar-toggler:focus,
 .navbar-toggler:active,
 .navbar-toggler-icon:focus {
@@ -29,15 +114,87 @@ body {
   box-shadow: none;
 }
 
+header {
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+}
+
 /*MAIN*/
-
-.accueil > section {
+.accueil section {
   height: 100vh;
-  background-color: blue;
+  padding-top: 56px;
+}
+.accueil .transition {
+  width: 100%;
+  height: 50px;
+  background: linear-gradient(to top, #1f1f1f, black 50%);
+}
+.accueil .transitionbis {
+  width: 100%;
+  height: 50px;
+  background: linear-gradient(to top, black, #1f1f1f 50%);
+}
+.accueil #accueil {
+  background-color: black;
+  position: relative;
+  text-align: center;
+}
+.accueil #accueil h1 {
+  font-size: 90px;
+  bottom: 20%;
+  text-transform: uppercase;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  white-space: nowrap;
+}
+.accueil #a_propos .para {
+  background-color: black;
+  width: 50%;
+  margin: 20px;
+  padding: 30px;
+}
+.accueil #a_propos .para h3 {
+  font-family: "Bebas Neue", cursive;
+}
+.accueil #a_propos #para2 {
+  position: absolute;
+  right: 0;
+  text-align: right;
+}
+.accueil #albums_photos {
+  background-color: black;
+}
+.accueil #me_contacter {
+  background-image: url("../wallp/reseaux.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.accueil #me_contacter #reseaux {
+  margin-top: 30%;
+  text-align: center;
+  list-style-type: none;
+}
+.accueil #me_contacter #reseaux li a img {
+  width: 50px;
+  height: 50px;
+  transition: all 0.5s;
+}
+.accueil #me_contacter #reseaux li a h3 {
+  text-decoration: none;
+  font-size: 16px;
+  transition: all 0.5s;
+}
+.accueil #me_contacter #reseaux li a:hover img {
+  filter: grayscale(1);
+  transition: all 1s;
+}
+.accueil #me_contacter #reseaux li a:hover h3 {
+  font-size: 17px;
+  transition: all 0.5s;
 }
 
-.accueil > section:nth-child(odd) {
-  background-color: red;
-}
-
-/*FOOTER*/
+/*FOOTER*//*# sourceMappingURL=style.css.map */
